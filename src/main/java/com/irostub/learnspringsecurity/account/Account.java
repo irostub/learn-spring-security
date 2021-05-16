@@ -1,5 +1,7 @@
 package com.irostub.learnspringsecurity.account;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.*;
 
 @Entity
@@ -45,5 +47,9 @@ public class Account {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void encodePassword(PasswordEncoder passwordEncoder){
+        this.password = passwordEncoder.encode(this.password);
     }
 }
