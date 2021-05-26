@@ -17,7 +17,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .mvcMatchers("/", "/info", "/account/**").permitAll() //ant pattern
-                .mvcMatchers("admin").hasRole("ADMIN") //admin 권한을 가지고 있어야만 접근 가능
+                .mvcMatchers("/admin").hasRole("ADMIN") //admin 권한을 가지고 있어야만 접근 가능
+                .mvcMatchers("/user").hasRole("USER") //admin 권한을 가지고 있어야만 접근 가능
                 .anyRequest().authenticated(); //위 사항을 제외한 모든 요청에 대해 인증이 되어야 접근
 
         http.formLogin(); //spring security 가 기본 제공하는 login form
